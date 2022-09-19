@@ -425,7 +425,7 @@ class ImageUploadTests(TestCase):
         self.recipe.refresh_from_db()
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertIn('image', res.data)
-        self.assertTrue(os.path.exists(self.recipe.image.ph))
+        self.assertTrue(os.path.exists(self.recipe.image.path))
 
     def test_upload_image_bad_request(self):
         ''' Test uploading invalid image. '''
