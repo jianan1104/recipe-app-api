@@ -18,7 +18,6 @@ from core.models import (
 from recipe.serializers import IngredientSerializer
 
 INGREDIENTS_URL = reverse('recipe:ingredient-list')
-RECIPES_URL = reverse('recipe:recipe-list')
 
 
 def detail_url(ingredient_id):
@@ -113,7 +112,7 @@ class PrivateIngredientsApiTests(TestCase):
             user=self.user
         )
         recipe.ingredients.add(in1)
-        res = self.client.get(RECIPES_URL, {'assigned_only': 1})
+        res = self.client.get(INGREDIENTS_URL, {'assigned_only': 1})
 
         s1 = IngredientSerializer(in1)
         s2 = IngredientSerializer(in2)
